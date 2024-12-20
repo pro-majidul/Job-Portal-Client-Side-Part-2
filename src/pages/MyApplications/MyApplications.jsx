@@ -12,11 +12,11 @@ const MyApplications = () => {
     useEffect(() => {
 
 
-        // fetch(`https://job-portal-server-for-recruiter-part2-4a8pxuv5g.vercel.app/job-application?email=${user.email}`)
+        // fetch(`https://job-portal-server-for-recruiter-part2.vercel.app/job-application?email=${user.email}`)
         //     .then(res => res.json())
         //     .then(data => setJobs(data))
 
-        // axios.get(`https://job-portal-server-for-recruiter-part2-4a8pxuv5g.vercel.app/job-application?email=${user.email}`, { withCredentials: true })
+        // axios.get(`https://job-portal-server-for-recruiter-part2.vercel.app/job-application?email=${user.email}`, { withCredentials: true })
         //     .then(res => setJobs(res.data))
 
         SecureAxios.get(`/job-application?email=${user.email}`)
