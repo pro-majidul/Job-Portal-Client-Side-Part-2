@@ -36,13 +36,13 @@ const AuthProvider = ({ children }) => {
             setUser(currentUser);
             if (currentUser?.email) {
                 const data = { email: currentUser.email }
-                axios.post('http://localhost:5000/jwt', data, { withCredentials: true })
+                axios.post('https://job-portal-server-for-recruiter-part2-4a8pxuv5g.vercel.app/jwt', data, { withCredentials: true })
                     .then(() => {
 
                         setLoading(false);
                     })
             } else {
-                axios.post('http://localhost:5000/logout', {}, { withCredentials: true })
+                axios.post('https://job-portal-server-for-recruiter-part2-4a8pxuv5g.vercel.app/logout', {}, { withCredentials: true })
                     .then(() => {
 
                         setLoading(false)
