@@ -5,8 +5,10 @@ import { IoSearchOutline } from 'react-icons/io5';
 
 const AllJobs = () => {
     const [sort, setSort] = useState(false)
-    const [search, setSearch] = useState('')
-    const { jobs, loading } = useDataFetch(sort, search)
+    const [search, setSearch] = useState('');
+    const [minPrize, setminPrize] = useState('')
+    const [maxPrize, setmaxPrize] = useState('')
+    const { jobs, loading } = useDataFetch(sort, search, minPrize, maxPrize)
     if (loading) {
         return <div className='flex items-center justify-center h-96'><span className="loading loading-spinner loading-lg"></span></div>
     }
@@ -22,11 +24,11 @@ const AllJobs = () => {
                 <div className='space-y-4'>
                     <label >
                         Min Prize
-                        <input placeholder='Min Price' type="text" className="input block input-bordered" />
+                        <input onKeyUp={(e) => setminPrize(e.target.value)} placeholder='Min Price' type="text" className="input block input-bordered" />
                     </label>
                     <label >
                         Max Prize
-                        <input placeholder='Max Price' type="text" className="input block input-bordered" />
+                        <input onKeyUp={(e) => setmaxPrize(e.target.value)} placeholder='Max Price' type="text" className="input block input-bordered" />
                     </label>
                 </div>
             </div>
