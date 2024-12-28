@@ -1,9 +1,11 @@
 import React from 'react';
 import Swal from 'sweetalert2';
 import useAuth from '../../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 
 const AddJob = () => {
 
+    const navigate = useNavigate()
     const { user } = useAuth();
 
     const handleAddJob = e => {
@@ -14,7 +16,7 @@ const AddJob = () => {
         // console.log(initialData)
         const { min, max, currency, ...newJob } = initialData;
         console.log(min, max, currency, newJob)
-        newJob.salaryRange = { min, max, currency }
+        newJob.salaryRange = { min: parseInt(min), max: parseInt(max), currency }
         newJob.requirements = newJob.requirements.split('\n');
         newJob.responsibilities = newJob.responsibilities.split('\n')
         console.log(newJob);
@@ -145,7 +147,7 @@ const AddJob = () => {
                     <label className="label">
                         <span className="label-text">HR Email</span>
                     </label>
-                    <input type="text" defaultValue={user?.email} name='hr_email' placeholder="HR Email" className="input input-bordered" required />
+                    <input readOnly type="text" defaultValue={user?.email} name='hr_email' placeholder="HR Email" className="input input-bordered" required />
                 </div>
                 {/* application Deadline */}
                 <div className="form-control">

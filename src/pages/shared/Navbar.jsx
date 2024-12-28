@@ -19,6 +19,7 @@ const Navbar = () => {
 
     const links = <div className='md:flex gap-4'>
         <li><NavLink to="/">Home</NavLink></li>
+        <li><NavLink to="/alljobs">All Jobs</NavLink></li>
         <li><NavLink to="/myApplications">My Applications</NavLink></li>
         <li><NavLink to="/addJob">Add A Job</NavLink></li>
         <li><NavLink to="/myPostedJobs">My Posted Jobs</NavLink></li>

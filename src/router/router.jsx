@@ -12,6 +12,7 @@ import MyApplications from "../pages/MyApplications/MyApplications";
 import AddJob from "../pages/AddJob/AddJob";
 import MyPostedJobs from "../pages/MyPostedJobs/MyPostedJobs";
 import ViewApplications from "../pages/ViewApplications/ViewApplications";
+import AllJobs from "../pages/alljobs/AllJobs";
 
 const router = createBrowserRouter([
   {
@@ -56,7 +57,12 @@ const router = createBrowserRouter([
       {
         path: 'signIn',
         element: <SignIn></SignIn>
+      },
+      {
+        path: '/alljobs',
+        element: <AllJobs></AllJobs>
       }
+
     ]
   },
 ]);

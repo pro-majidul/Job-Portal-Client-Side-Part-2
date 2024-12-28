@@ -29,7 +29,7 @@ const MyApplications = () => {
     }, [user.email])
 
 
-    const handelDelete = (id) => {
+    const handelDelete = (id, jobid) => {
         console.log(id);
         // SecureAxios.delete(`/job-application/${id}?email=${user.email}`)
         //     .then(res => {
@@ -50,7 +50,7 @@ const MyApplications = () => {
         //         setJobs(data)
         //     })
 
-        axios.delete(`https://job-portal-server-for-recruiter-part2.vercel.app/job-application/${id}?email=${user.email}`, { withCredentials: true })
+        axios.delete(`https://job-portal-server-for-recruiter-part2.vercel.app/job-application/${id}?email=${user.email}&jobId=${jobid}`, { withCredentials: true })
             .then(res => {
                 // setJobs(res.data);
                 console.log(res.data);
@@ -113,7 +113,7 @@ const MyApplications = () => {
                                 </td>
                                 <td>Purple</td>
                                 <th>
-                                    <button onClick={() => handelDelete(job._id)} className="btn btn-ghost btn-xs">X</button>
+                                    <button onClick={() => handelDelete(job._id, job.job_id)} className="btn btn-ghost btn-xs">X</button>
                                 </th>
                             </tr>)
                         }

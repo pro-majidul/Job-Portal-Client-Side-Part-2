@@ -1,10 +1,11 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const ViewApplications = () => {
     const applications = useLoaderData();
-
+    const {job_id} = useParams()
+    console.log(job_id);
     const handleStatusUpdate = (e, id) => {
         console.log(e.target.value, id)
         const data = {
