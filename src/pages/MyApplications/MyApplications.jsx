@@ -28,6 +28,41 @@ const MyApplications = () => {
 
     }, [user.email])
 
+
+    const handelDelete = (id) => {
+        console.log(id);
+        // SecureAxios.delete(`/job-application/${id}?email=${user.email}`)
+        //     .then(res => {
+        //         setJobs(res.data)
+        //     })
+        //     .catch(error => {
+        //         console.log(error.code);
+        //     })
+        // fetch(`https://job-portal-server-for-recruiter-part2.vercel.app/job-application/${id}?email=${user.email}`, {
+        //     method: "DELETE",
+        //     headers: {
+        //         'content-type': 'application/json'
+        //     }
+        // }, { withCredentials: true })
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         console.log(data);
+        //         setJobs(data)
+        //     })
+
+        axios.delete(`https://job-portal-server-for-recruiter-part2.vercel.app/job-application/${id}?email=${user.email}`, { withCredentials: true })
+            .then(res => {
+                // setJobs(res.data);
+                console.log(res.data);
+                const remainingdata = jobs.filter(job => job._id != id);
+                setJobs(remainingdata)
+
+            })
+
+
+
+    }
+
     return (
         <div>
             <h2 className="text-3xl">My Applications: {jobs.length}</h2>
@@ -78,7 +113,7 @@ const MyApplications = () => {
                                 </td>
                                 <td>Purple</td>
                                 <th>
-                                    <button className="btn btn-ghost btn-xs">X</button>
+                                    <button onClick={() => handelDelete(job._id)} className="btn btn-ghost btn-xs">X</button>
                                 </th>
                             </tr>)
                         }
