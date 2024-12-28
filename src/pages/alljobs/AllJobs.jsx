@@ -5,7 +5,8 @@ import { IoSearchOutline } from 'react-icons/io5';
 
 const AllJobs = () => {
     const [sort, setSort] = useState(false)
-    const { jobs, loading } = useDataFetch( sort )
+    const [search, setSearch] = useState('')
+    const { jobs, loading } = useDataFetch(sort, search)
     if (loading) {
         return <div className='flex items-center justify-center h-96'><span className="loading loading-spinner loading-lg"></span></div>
     }
@@ -16,16 +17,16 @@ const AllJobs = () => {
                 <button onClick={() => setSort(!sort)} className={`btn ${sort ? 'btn-accent' : ''}`}>{sort ? 'Sorted By Salery' : 'Sort By Salery'}</button>
                 <div className='w-full flex items-center'>
                     <IoSearchOutline size={38} />
-                    <input type="text" className=' input w-full max-w-2xl input-bordered' />
+                    <input onChange={(e) => setSearch(e.target.value)} type="text" placeholder='Search by Jobts Tytle' className=' input w-full max-w-2xl input-bordered' />
                 </div>
                 <div className='space-y-4'>
                     <label >
                         Min Prize
-                        <input type="text" className="input block input-bordered" />
+                        <input placeholder='Min Price' type="text" className="input block input-bordered" />
                     </label>
                     <label >
                         Max Prize
-                        <input type="text" className="input block input-bordered" />
+                        <input placeholder='Max Price' type="text" className="input block input-bordered" />
                     </label>
                 </div>
             </div>
